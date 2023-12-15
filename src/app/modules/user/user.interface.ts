@@ -17,7 +17,7 @@ export type IUser = {
 export type UserModel = {
     isUserExist(
         email: string
-    ): Promise<Partial<Pick<IUser, "name" | "role" | "_id">> | null> ;
+    ): Promise<Pick<IUser, "name" | "role" | "_id" | "password">>;
     isPasswordMatched(
         givenPassword: string,
         savedPassword: string

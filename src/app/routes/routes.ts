@@ -1,17 +1,15 @@
-// import express from "express";
+import express from "express";
+import  authRouter  from "../../app/modules/auth/auth.routes";
 
-// const router = express.Router();
-// const abc = "a";
-// const moduleRoutes = [
-//     {
-//         path: "/",
-//         route: abc,
-//     },
-// ];
+const router = express.Router();
+const moduleRoutes = [
+    {
+        path: "/auth",
+        route: authRouter,
+    },
+];
 
-// moduleRoutes.forEach(route => router.use(route.path, route.route));
+moduleRoutes.forEach(route => router.use(route.path, route.route));
 
-// export default router;
+export default router;
 
-const abc = 0;
-const cde = 8607;

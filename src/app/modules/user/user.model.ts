@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 import { IUser, UserModel } from "./user.interface";
 import config from "../../../config";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 const userSchema = new mongoose.Schema<IUser, UserModel>(
     {
@@ -55,13 +55,12 @@ const userSchema = new mongoose.Schema<IUser, UserModel>(
 
 userSchema.statics.isUserExist = async function (
     email: string
-): Promise<Partial<Pick<IUser, "name" | "role" | "_id">> | null> {
+): Promise<Pick<IUser, "name" | "password" | "role" | "_id"> | null> {
     return await User.findOne(
         { email: email },
         { _id: 1, password: 1, role: 1, name: 1 }
     );
 };
-
 
 userSchema.statics.isPasswordMatched = async function (
     givenPassword: string,
